@@ -1,0 +1,42 @@
+Tor protects your privacy on the internet by hiding the connection
+between your Internet address and the services you use. We believe Tor
+is reasonably secure, but please ensure you read the instructions and
+configure it properly.
+
+To build Tor from source:
+        ./configure && make && make install
+
+To build Tor from a just-cloned git repository:
+        sh autogen.sh && ./configure && make && make install
+
+Home page:
+        https://www.torproject.org/
+
+Download new versions:
+        https://www.torproject.org/download/download.html
+
+Documentation, including links to installation and setup instructions:
+        https://www.torproject.org/docs/documentation.html
+
+Making applications work with Tor:
+        https://wiki.torproject.org/projects/tor/wiki/doc/TorifyHOWTO
+
+Frequently Asked Questions:
+        https://www.torproject.org/docs/faq.html
+
+
+To get started working on Tor development:
+        See the doc/HACKING file.
+
+===============================================================================
+
+NOTE: This Git Repository contains the modified Tor client code as proposed in the Counter-RAPTOR: Safeguarding Tor Against Active Routing Attacks paper (http://www.ieee-security.org/TC/SP2017/program.html). This is NOT the original Tor code. 
+
+How to use:
+Sample torrc file (In /etc/tor/torrc or /usr/local/etc/tor/torrc):
+	Resilience 0.5
+	UseEntryGuardsAsDirGuards 0
+
+Explanation:
+- Resilience value (e.g. 0.5) needs to be in [0,1]. 
+- Default UseEntryGuardsAsDirGuards is set to 1, however, we have not changed the DirGuard selection to our entry guard selection algorithm in this version yet. We expect to update it in the next version, so this option would not be necessary. 
